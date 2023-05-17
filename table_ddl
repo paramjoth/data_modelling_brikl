@@ -1,0 +1,58 @@
+CREATE TABLE Product(
+        id int primary key,
+        title varchar(500) not null,
+        description varchar(max),
+        price decimal(10,2)) not null,
+        available_date date,
+        stock_quantity int,
+        product_images ntext
+);
+
+Create table Category(
+        id int Primary key,
+        name varchar(255) not null
+);
+
+create table ProductCategory(
+        id int Primary key
+        product_id int Foreign key REFERENCES Product(id),
+        category_id int Foreign key REFERENCES Category(id)
+);
+
+create table StoreFront(
+    id int Primary key
+);
+
+Create table StoreFrontProduct(
+    store_id int Foreign key References StoreFront(id),
+    product_id int Foreign key References Product(id)
+);
+
+create table MicroStore(
+    id int Primary Key,
+    store_id int Foreign key References StoreFront(id),
+    promotional_products varchar(255)
+);
+
+create table User(
+    id int primary key,
+    user_name varchar(255)
+);
+
+create table User_product(
+    id int Primary key,
+    id int Foreign key References User(id),
+    product_id int Foreign Key References Product(id)
+);
+
+Create table CustomizedProduct(
+    id int Primary key,
+    title varchar(500) not null,
+    description varchar(max),
+    price decimal(10,2) not null,
+    available_date date,
+    stock_quantity int,
+    product_images text,
+    custom_details text,
+    Foreign key (id) references Product(id)
+);
