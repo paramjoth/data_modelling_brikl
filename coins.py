@@ -1,8 +1,6 @@
 from itertools import combinations
 
 def coin_sum(coins,input):
-    new_list = list()
-    start = 0
     for i in range(1,len(coins)):
         coin_combinations = list(combinations(coins,i))
         #print(coin_combinations)
